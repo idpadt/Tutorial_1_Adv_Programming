@@ -27,6 +27,11 @@ public class ProductServiceImpl implements ProductService{
         return product;
     }
 
+    public Product delete(Product product) {
+        productRepository.delete(product);
+        return product;
+    }
+
     @Override
     public List<Product> findAll() {
         Iterator<Product> productIterator = productRepository.findAll();
@@ -36,8 +41,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findProduct(String productId){
-        int index = Integer.parseInt(productId);
-        return productRepository.findProduct(index);
+    public Product getProduct(String productId){
+        return productRepository.getProduct(productId);
     }
 }

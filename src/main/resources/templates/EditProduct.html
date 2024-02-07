@@ -19,8 +19,13 @@
             <label for="quantityInput">Quantity</label>
             <input th:field="*{productQuantity}" type="text" class="form-control mb-4 col-4" id="quantityInput" placeholder="Enter product' name">
         </div>
-        <input type="hidden" th:field="*{productId}" />
+        <input type="hidden" th:field="*{productId}"/>
         <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <form th:action="@{/product/delete}" th:object="${product}" method="post">
+        <input type="hidden" th:field="*{productId}"/>
+        <button type="submit" class="btn btn-danger mt-4">Delete</button>
     </form>
 </div>
 

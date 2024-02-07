@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
-    private int idCounter = 0;
+    private int idCounter = 696969001;
 
     public Product create(Product product) {
         product.setProductId(Integer.toString(idCounter));
@@ -20,8 +20,14 @@ public class ProductRepository {
     }
 
     public Product update(Product product) {
-        int productIndex = Integer.parseInt(product.getProductId());
+        int productIndex = findIndex(product.getProductId());
         productData.set(productIndex, product);
+        return product;
+    }
+
+    public Product delete(Product product) {
+        int productIndex = findIndex(product.getProductId());
+        productData.remove(productIndex);
         return product;
     }
 
@@ -29,5 +35,19 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    public Product findProduct(int productId){return productData.get(productId);}
+    //public Product findProduct(int productId){return productData.get(productId);}
+
+    public int findIndex(String productId){
+        for(int i=0; i < productData.size(); i++) {
+            if (productData.get(i).getProductId().equals(productId)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public Product getProduct(String productId){
+        int index = findIndex(productId);
+        return productData.get(index);
+    }
 }
