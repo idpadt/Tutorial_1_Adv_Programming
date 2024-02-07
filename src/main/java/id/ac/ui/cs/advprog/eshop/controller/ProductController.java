@@ -36,6 +36,7 @@ public class ProductController {
         return "productList";
     }
 
+    // Open edit page already filled with existing details
     @GetMapping("/edit/{productId}")
     public String createEditPage(@PathVariable String productId, Model model) {
         Product product = service.getProduct(productId);

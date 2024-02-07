@@ -35,8 +35,6 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    //public Product findProduct(int productId){return productData.get(productId);}
-
     public int findIndex(String productId){
         for(int i=0; i < productData.size(); i++) {
             if (productData.get(i).getProductId().equals(productId)) {
