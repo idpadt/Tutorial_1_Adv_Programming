@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
+import jakarta.validation.*;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping("/product")
@@ -24,7 +26,14 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String createProductPost(@ModelAttribute Product product, Model model){
+    /** public String createProductPost(@ModelAttribute Product product, Model model){
+        service.create(product);
+        return "redirect:list";
+    }**/
+    public String createProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "createProduct"; // Return to the form with error messages
+        }
         service.create(product);
         return "redirect:list";
     }
@@ -45,7 +54,14 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    public String updateProductPost(@ModelAttribute Product product, Model model){
+    /**public String updateProductPost(@ModelAttribute Product product, Model model){
+        service.update(product);
+        return "redirect:list";
+    }**/
+    public String updateProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "editProduct"; // Return to the form with error messages
+        }
         service.update(product);
         return "redirect:list";
     }
