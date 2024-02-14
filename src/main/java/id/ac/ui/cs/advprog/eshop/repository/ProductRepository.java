@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
-    private int idCounter = 696969001;
+    private int idCounter = 99990000;
 
     public Product create(Product product) {
         product.setProductId(Integer.toString(idCounter));

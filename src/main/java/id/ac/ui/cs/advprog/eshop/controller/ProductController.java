@@ -15,6 +15,8 @@ import org.springframework.validation.BindingResult;
 @RequestMapping("/product")
 public class ProductController {
 
+    String redirect_to_list = "redirect:list";
+
     @Autowired
     private ProductService service;
 
@@ -26,16 +28,12 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    /** public String createProductPost(@ModelAttribute Product product, Model model){
-        service.create(product);
-        return "redirect:list";
-    }**/
     public String createProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "createProduct"; // Return to the form with error messages
         }
         service.create(product);
-        return "redirect:list";
+        return redirect_to_list;
     }
 
     @GetMapping("/list")
@@ -45,7 +43,6 @@ public class ProductController {
         return "productList";
     }
 
-    // Open edit page already filled with existing details
     @GetMapping("/edit/{productId}")
     public String createEditPage(@PathVariable String productId, Model model) {
         Product product = service.getProduct(productId);
@@ -54,21 +51,17 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    /**public String updateProductPost(@ModelAttribute Product product, Model model){
-        service.update(product);
-        return "redirect:list";
-    }**/
     public String updateProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "editProduct"; // Return to the form with error messages
         }
         service.update(product);
-        return "redirect:list";
+        return redirect_to_list;
     }
 
     @PostMapping("/delete")
     public String deleteProductPost(@ModelAttribute Product product, Model model){
         service.delete(product);
-        return "redirect:list";
+        return redirect_to_list;
     }
 }
