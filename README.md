@@ -57,5 +57,30 @@ For now? Absolutely not. Cux i didnt finish the exercise :P
 However, if i have completed it, i assume it would met the definition of CI/CD. Because the CI (continuous integration) part is greatly helped by Github actions and SonarCloud.
 And the CD (continuous deployment) part is helped by Koyeb. Because i choose to be push based (ie do the CI and CD when i push to the main repository), integrating and deploying my code becomes automated.
 
+## Tutorial 3
+### Reflection
+1.  Explain what principles you apply to your project!
+  - **Single Responsibility Principle (SRP)** :**a class should have a singular responsibility.**
+    Although simple, this principle is more nuanced. It's difficult to determine what methods are considered the same responsibility. Example, can create, update, and delete be in the same class and still adhere to SRP? Is it not all data manipulation?
+    Overall, i think my code is quite following SRP.
+  - **Open-Closed Principle (OCP) : **software artifact should be open for extension but closed for modification****
+    I'm quite certain i followed OCP :)
+  - **Liskov Substitution Principle (LSP) : Child classes must be substitutable for their parent classes**
+    Not too difficult considering the project doesn't have many child classes
+  - **Interface Segregation Principle (ISP) : Don't force to implement an interface that is irrelevant**
+    Not too hard, to determine what interfaces are too complex and can be separated to be more specialized.
+  - **Dependency Inversions Principle (DIP): Classes should depend on interface or abstract classes and not concrete classes**
+    Not as bad as i thought, although it produces many more interfaces.
 
+2. Explain the advantages of applying SOLID principles to your project with examples.
+- Easier to maintain
+- Easier to scale
+- Easier to test
+- Flexible
+- More modular, i.e. reusable
+3. Explain the disadvantages of not applying SOLID principles to your project with examples.
+- Code rigidity
+- Increased complexity
+- Difficulty in testing
+- Reduced Reusability
 
